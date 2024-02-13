@@ -9,30 +9,8 @@
         public function obtenerListaEmpleados()
         {
             $listaEmpleados = $this->ejecutarConsulta("SELECT * FROM ms_empleados");
-            $numeroEmpleados = count($listaEmpleados);
-            if ($numeroEmpleados > 0){
-                // Comenzar la tabla
-                echo '<table class="table">';
-                echo '<tr><th scope="col">ID</th><th scope="col">Clave</th><th scope="col">Nombre</th><th scope="col">Edad</th><th scope="col">Fecha Nacimiento</th></tr>';
-
-                // Iterar sobre los resultados y construir las filas de la tabla
-                foreach ($listaEmpleados as $empleado) {
-                    echo '<tr>';
-                    echo '<td>' . $empleado['id_empleado'] . '</td>';
-                    echo '<td>' . $empleado['clave_empleado'] . '</td>';
-                    echo '<td>' . $empleado['nombre'] . '</td>';
-                    echo '<td>' . $empleado['edad'] . '</td>';
-                    echo '<td>' . $empleado['fecha_nacimiento'] . '</td>';
-                    echo '</tr>';
-                }
-
-                // Cerrar la tabla
-                echo '</table>';
-            }else{
-                echo " <script>
-                alert('No hay usuarios para mostrar')
-                </script> ";
-            }
+            return $listaEmpleados;
+            
         }
 
         public function guardarEmpleado()

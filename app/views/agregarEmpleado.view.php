@@ -45,6 +45,7 @@
                     <input type="text" class="form-control" id="experiencia_profesional" name="experiencia_profesional" required>
                 </div>
                 <button type="submit" class="btn btn-primary" id="boton-guardar">Enviar</button>
+                <a href="<?php APP_URL;?>listEmpleados" class="btn btn-outline-danger" id="boton-cancelar">Cancelar</a>
             </form>
         </div>
     </div>
