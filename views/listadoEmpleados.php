@@ -90,7 +90,7 @@ require_once 'inc/header.php';
                         <textarea type="text" class="form-control" id="experiencia_profesional" name="experiencia_profesional" required></textarea>
                     </div>
                     <!-- Agrega aquí los demás campos del formulario -->
-                    <button type="submit" onclick="Empleados.guardarEmpleado()" class="btn btn-primary">Agregar</button>
+                    <button type="button" class="btn btn-primary btn_guardar_empleado">Agregar</button>
                 </form>
             </div>
         </div>

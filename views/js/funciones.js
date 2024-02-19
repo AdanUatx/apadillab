@@ -12,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('btn_agregar_empleado').style.display = 'none';
   }
 
+  $(document).on("click", ".btn_guardar_empleado", function () {
+      Empleados.guardarEmpleado();
+  });
 
   $(document).on("click", ".btn_visualizar_empleado", function () {
     // Muestra la información del empleado en un modal o una nueva vista
@@ -180,19 +183,25 @@ var Empleados = {
         if (respuesta.success) {
           alert(respuesta.msg);
           // Si el servidor devuelve éxito, cierra el modal y actualiza la tabla de empleados
-          $("#modalAgregarEmpleado").modal("hide");
           $('#formAgregarEmpleado').trigger('reset');
+
+          $("#modalAgregarEmpleado").modal("hide");
 
           Empleados.listado_empleados(); // Esta función debería actualizar la tabla de empleados con la información más reciente
         } else {
+          console.log(respuesta)
           // Si hay un error, muestra un mensaje al usuario
-          alert("Error al agregar empleado: " + respuesta.msg);
+          alert("Error al agregar empleado: " + respuesta.msg.join('\n'));
         }
       },
-      error: function (error) {
-        console.log(error);
+      error: function(xhr, status, error) {
+        console.log("XHR:", xhr);
+        console.log("Status:", status);
+        console.log("Error:", error);
+        console.log("Response Text:", xhr.responseText);
         alert("Error en la solicitud AJAX");
-      },
+      }
+
     });
   },
 

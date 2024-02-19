@@ -70,7 +70,6 @@ class EmpleadosControlador
             if($empleadoNuevo){
                 //recuperar el id del empleado registrado
                 $idNuevoEmpleado = $this->empleadoModelo->ultimoID();
-                var_dump($idNuevoEmpleado);
                 $datosDetalleEmpleado['id_empleado'] = $idNuevoEmpleado;
                 $guardoContacto = $this->detalleEmpleadoModelo->insertar($datosDetalleEmpleado);
                 if($guardoContacto){

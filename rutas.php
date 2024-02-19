@@ -31,7 +31,7 @@ if(isset($parametros_get['peticion']) && $parametros_get['peticion'] != ''
                     break;
                 case 'agregar': //201
                     $respuesta_controlador = $empControlador->agregar($parametros_post);
-                    $rutas->peticion($respuesta_controlador['success'] ? 201 : 400,$respuesta_controlador);
+                    $rutas->peticion($respuesta_controlador['success'] ? 201 : 200,$respuesta_controlador);
                     break;
                 case 'actualizar':
                     $respuesta_controlador = $empControlador->actualizar($parametros_post);
