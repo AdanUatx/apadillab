@@ -1,43 +1,58 @@
 <?php
-    require_once "./config/app.php";
-    require_once "./autoload.php";
-    require_once "./app/views/session_start.php";
-    if(isset($_GET['views'])){
-        $url=explode("/",$_GET['views']);
-    }else{
-        $url=["login"];
-    }
-    ?>
+require_once "./autoload.php";
+require_once "./views/session_start.php";
+if(isset($_GET['views'])){
+    $url=explode("/",$_GET['views']);
+}else{
+    $url=["login"];
+}
+?>
 
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="es">
-<head>
-    <?php require_once "./app/views/inc/header.php" ?>
-</head>
+<?php
+require_once 'views/inc/header.php';
+?>
 <body>
 
+<?php
 
-    <?php
-    use app\controllers\VistasController;
-    use app\controllers\AuthController;
+    $url = isset($_GET['views']) ? $_GET['views'] : 'login';
+    $url = str_replace('views/', '', $url);
+    $vista = obtenerVistas($url);
 
-    $insLogin = new AuthController();
+    function obtenerVistas($vista)
+    {
+        $listaBlanca = ["login","logOut", "listadoEmpleados", "agregarEmpleado"];
 
-    $vistasController = new VistasController();
-
-    $vista = $vistasController->obtenerVistasControlador($url[0]);
+        if (in_array($vista, $listaBlanca)) {
+            if (is_file("./views/" . $vista . ".php")) {
+                $contenidoMostrar = "./views/" . $vista . ".php";
+            } else {
+                $contenidoMostrar = "404";
+            }
+        } elseif ($vista == 'login' || $vista == 'index') {
+            $contenidoMostrar = "login";
+        } else {
+            $contenidoMostrar = "404";
+        }
+        return $contenidoMostrar;
+    }
 
     if ($vista == "login" || $vista == "404") {
-        require_once "./app/views/".$vista.".view.php";
+        require_once "./views/" . $vista . ".php";
     } else {
-        if (!isset($_SESSION['id'])){
-            $insLogin->cerrarSesionControlador();
-            exit();
+        if (!isset($_SESSION['id'])) {
+            //echo "No hay session activa";
+        }else{
+            require_once "./views/inc/nav-bar.php";
         }
-        require_once "./app/views/inc/navbar.php";
         require_once $vista;
     }
 
-    require_once "./app/views/inc/footer.php" ?>
+
+require_once 'views/inc/footer.php'
+?>
 </body>
 </html>
