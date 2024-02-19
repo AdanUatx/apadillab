@@ -98,6 +98,20 @@ class BaseDeDatos{
         }
     }
 
+    public function eliminarDetalleEmpleadoRegistro($tabla,$condicionales){
+        try{
+            $condicionesSQL = $this->obtenerCondicionalesWhereAnd($condicionales);
+            $consultaDeleteSQL = "DELETE FROM $tabla $condicionesSQL";
+            $query = $this->mysqli->query($consultaDeleteSQL);
+            if($query !== true){
+                $this->errores = $this->mysqli->error_list;
+                return false;
+            }return true;
+        }catch (Exception $ex){
+            return false;
+        }
+    }
+
     public function ultimoID(){
         return $this->mysqli->insert_id;
     }                                           

@@ -35,4 +35,8 @@ class ModeloBase extends BaseDeDatos
         return $this->eliminarRegistro($this->tabla,$condiciones);
     }
 
+    public function eliminarDetalleEmpleado($condiciones){
+        return $this->eliminarDetalleEmpleadoRegistro($this->tabla,$condiciones);
+    }
+
 }

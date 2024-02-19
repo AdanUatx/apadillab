@@ -35,7 +35,7 @@ if(isset($parametros_get['peticion']) && $parametros_get['peticion'] != ''
                     break;
                 case 'actualizar':
                     $respuesta_controlador = $empControlador->actualizar($parametros_post);
-                    $rutas->peticion($respuesta_controlador['success'] ? 200 : 400,$respuesta_controlador);
+                    $rutas->peticion($respuesta_controlador['success'] ? 200 : 200,$respuesta_controlador);
                     break;
                 case 'eliminar':
                     $respuesta_controlador = $empControlador->eliminar($parametros_post);

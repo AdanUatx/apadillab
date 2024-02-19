@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   $(document).on("click", ".btn_guardar_empleado", function () {
-      Empleados.guardarEmpleado();
+      var actualizar = $('#id_empleado').length != 0 ? true : false;
+      Empleados.guardarEmpleado(actualizar);
   });
 
   $(document).on("click", ".btn_visualizar_empleado", function () {
@@ -172,11 +173,13 @@ var Empleados = {
     });
   },
 
-  guardarEmpleado: function () {
+  guardarEmpleado: function (actualizar = false) {
+    var urlPeticion = actualizar ? URL_BACKEND + 'peticion=empleado&funcion=actualizar' : URL_BACKEND + 'peticion=empleado&funcion=agregar';
+
     // Enviar los datos mediante AJAX
     $.ajax({
       type: "POST",
-      url: URL_BACKEND + "peticion=empleado&funcion=agregar",
+      url: urlPeticion,
       data: $('#formAgregarEmpleado').serialize(),
       dataType: "json",
       success: function (respuesta) {
@@ -189,7 +192,6 @@ var Empleados = {
 
           Empleados.listado_empleados(); // Esta función debería actualizar la tabla de empleados con la información más reciente
         } else {
-          console.log(respuesta)
           // Si hay un error, muestra un mensaje al usuario
           alert("Error al agregar empleado: " + respuesta.msg.join('\n'));
         }

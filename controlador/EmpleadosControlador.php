@@ -98,20 +98,20 @@ class EmpleadosControlador
             'success' => false,
             'msg' => array('No fue posible actualizar el empleado'),
         );
-        $datosContacto = $datosFormulario['listado_datos_contacto'];
-        unset($datosFormulario['listado_datos_contacto']);
+        // Validaciones del formulario
         $validacion = ValidacionFormulario::validarFormEmpleadoActualizar($datosFormulario);
+
+        $datosDetalleEmpleado['puesto'] = $datosFormulario['puesto'];
+        $datosDetalleEmpleado['experiencia_profesional'] = $datosFormulario['puesto'];
+        unset($datosFormulario['puesto'] , $datosFormulario['experiencia_profesional']);
         if($validacion['status']){
             $id_empleado = $datosFormulario['id_empleado'];
             unset($datosFormulario['id_empleado']);
-            $empleadoActualizar = $this->empleadoModelo->actualizar($datosFormulario,array('id' => $id_empleado));
+            $empleadoActualizar = $this->empleadoModelo->actualizar($datosFormulario,array('id_empleado' => $id_empleado));
             if($empleadoActualizar){
-                $guardoContacto = true;
-                $this->contactoEmpleadoModelo->eliminar(array('empleado_id' => $id_empleado));
-                foreach ($datosContacto as $dc){
-                    $dc['empleado_id'] = $id_empleado;
-                    $guardoContacto = $this->contactoEmpleadoModelo->insertar($dc);
-                }
+                $this->detalleEmpleadoModelo->eliminarDetalleEmpleado(array('id_empleado' => $id_empleado));
+                $datosDetalleEmpleado['id_empleado'] = $id_empleado;
+                $guardoContacto = $this->detalleEmpleadoModelo->insertar($datosDetalleEmpleado);
                 if($guardoContacto){
                     $respuesta = array(
                         'success' => true,
