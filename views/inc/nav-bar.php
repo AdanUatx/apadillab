@@ -8,7 +8,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/apadillab/views/listadoEmpleados">Inicio</a>
+                    <a class="nav-link" id="btn_iniciar_sesion" aria-current="page" href="/apadillab/views/login">Iniciar Sesión</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">Lista de empleados</a>
@@ -33,6 +33,8 @@
     if (datosUsuario) {
         var usuario = JSON.parse(datosUsuario);
         document.getElementById('rol-usuario').textContent = usuario?.rol;
+        document.getElementById('btn_iniciar_sesion').style.display = 'none';
+
     } else {
         console.log('No hay datos de usuario almacenados en sessionStorage');
         document.getElementById('nav-item').style.display = 'none';

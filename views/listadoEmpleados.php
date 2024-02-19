@@ -17,7 +17,7 @@ require_once 'inc/header.php';
                 <legend>Tablero de resultados</legend>
             </fieldset>
             <div class="col-12" style="text-align: right">
-                <button type="button" id="btn_agregar_empleado" class="btn btn-outline-info btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpleado">Agregar empleado</button>
+                <button type="button" id="btn_agregar_empleado" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpleado">Agregar empleado</button>
             </div>
         </div>
         <table id="tableroEmpleados" class="table table-striped">
