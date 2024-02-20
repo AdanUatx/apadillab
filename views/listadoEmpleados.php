@@ -14,7 +14,7 @@ require_once 'inc/header.php';
         <!-- boton de agregar uno nuevo -->
         <div class="row">
             <fieldset>
-                <legend>Tablero de resultados</legend>
+                <legend>Administrador de Empleados</legend>
             </fieldset>
             <div class="col-12" style="text-align: right">
                 <button type="button" id="btn_agregar_empleado" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalAgregarEmpleado">Agregar empleado</button>

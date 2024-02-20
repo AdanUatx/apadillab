@@ -246,6 +246,15 @@ var Empleados = {
             "<p><strong>Edad:</strong> " +
             empleado.edad +
             " años</p>" +
+            "<p><strong>Fecha de Ingreso:</strong> " +
+            empleado.fecha_ingreso +
+            "</p>" +
+              "<p><strong>Puesto:</strong> " +
+              empleado.detalleEmpleado[0].puesto +
+              "</p>" +
+              "<p><strong>Experiencia Profesional:</strong> " +
+              empleado.detalleEmpleado[0].experiencia_profesional +
+              "</p>" +
             "<p><strong>Sueldo en Pesos Mexicanos (MXN):</strong> $" +
             empleado.sueldo_base +
             "</p>" +
