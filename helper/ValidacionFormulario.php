@@ -6,28 +6,28 @@ class ValidacionFormulario
     public static function validarFormEmpleadoNuevo($datosFormulario){
         $validacion['status'] = true;
         $validacion['msg'] = array();
-        if(!isset($datosFormulario['nombre']) || $datosFormulario['nombre'] == '' || $datosFormulario['nombre'].trim(" ")){
+        if(!isset($datosFormulario['nombre']) || $datosFormulario['nombre'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo nombre es requerido';
-        }if(!isset($datosFormulario['apellido_paterno']) || $datosFormulario['apellido_paterno'] == '' || $datosFormulario['apellido_paterno'].trim(" ")){
+        }if(!isset($datosFormulario['apellido_paterno']) || $datosFormulario['apellido_paterno'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo apellido paterno es requerido';
-        }if(!isset($datosFormulario['apellido_materno']) || $datosFormulario['apellido_materno'] == '' || $datosFormulario['apellido_materno'].trim(" ")){
+        }if(!isset($datosFormulario['apellido_materno']) || $datosFormulario['apellido_materno'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo apellido materno es requerido';
-        }if(!isset($datosFormulario['genero']) || $datosFormulario['genero'] == '' || $datosFormulario['genero'].trim(" ")){
+        }if(!isset($datosFormulario['genero']) || $datosFormulario['genero'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo genero es requerido';
-        }if(!isset($datosFormulario['fecha_nacimiento']) || $datosFormulario['fecha_nacimiento'] == '' || $datosFormulario['fecha_nacimiento'].trim(" ")){
+        }if(!isset($datosFormulario['fecha_nacimiento']) || $datosFormulario['fecha_nacimiento'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo fecha de nacimiento es requerido';
-        }if(!isset($datosFormulario['sueldo_base']) || $datosFormulario['sueldo_base'] == '' || $datosFormulario['sueldo_base'].trim(" ")){
+        }if(!isset($datosFormulario['sueldo_base']) || $datosFormulario['sueldo_base'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo sueldo es requerido';
-        }if(!isset($datosFormulario['puesto']) || $datosFormulario['puesto'] == '' || $datosFormulario['puesto'].trim(" ")){
+        }if(!isset($datosFormulario['puesto']) || $datosFormulario['puesto'] == ''){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo puesto es requerido';
-        }if(!isset($datosFormulario['experiencia_profesional']) || $datosFormulario['experiencia_profesional'] == '' || $datosFormulario['experiencia_profesional'].trim(" ")){
+        }if(!isset($datosFormulario['experiencia_profesional']) || $datosFormulario['experiencia_profesional'] == '' ){
             $validacion['status'] = false;
             $validacion['msg'][] = 'El campo experiencia profesional es requerido';
         }
